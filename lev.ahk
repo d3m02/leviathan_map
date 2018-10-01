@@ -1,64 +1,129 @@
+CreateBox(Color)
+{
+	Gui 81:color, %Color%
+	Gui 81:+ToolWindow -SysMenu -Caption +AlwaysOnTop
+	Gui 82:color, %Color%
+	Gui 82:+ToolWindow -SysMenu -Caption +AlwaysOnTop
+	Gui 83:color, %Color%
+	Gui 83:+ToolWindow -SysMenu -Caption +AlwaysOnTop
+	Gui 84:color, %Color%
+	Gui 84:+ToolWindow -SysMenu -Caption +AlwaysOnTop
+}
+
+Box(XCor, YCor, Width, Height, Thickness, Offset)
+{
+	If InStr(Offset, "In")
+	{
+		StringTrimLeft, offset, offset, 2
+		If not Offset
+			Offset = 0
+		Side = -1
+	} Else {
+		StringTrimLeft, offset, offset, 3
+		If not Offset
+			Offset = 0
+		Side = 1
+	}
+	x := XCor - (Side + 1) / 2 * Thickness - Side * Offset
+	y := YCor - (Side + 1) / 2 * Thickness - Side * Offset
+	h := Height + Side * Thickness + Side * Offset * 2
+	w := Thickness
+	Gui 81:Show, x%x% y%y% w%w% h%h% NA
+	x += Thickness
+	w := Width + Side * Thickness + Side * Offset * 2
+	h := Thickness
+	Gui 82:Show, x%x% y%y% w%w% h%h% NA
+	x := x + w - Thickness
+	y += Thickness
+	h := Height + Side * Thickness + Side * Offset * 2
+	w := Thickness
+	Gui 83:Show, x%x% y%y% w%w% h%h% NA
+	x := XCor - (Side + 1) / 2 * Thickness - Side * Offset
+	y += h - Thickness
+	w := Width + Side * Thickness + Side * Offset * 2
+	h := Thickness
+	Gui 84:Show, x%x% y%y% w%w% h%h% NA
+}
+
+RemoveBox()
+{
+	Gui 81:destroy
+	Gui 82:destroy
+	Gui 83:destroy
+	Gui 84:destroy
+}
+DrawMap(){
+    Sleep, 200
+    MouseMove,910,	373
+    Click
+    Sleep, 200
+    MouseMove,898,	353
+    Click
+    Sleep, 200
+    MouseMove,804,	342
+    Click
+    Sleep, 200
+    MouseMove,756,	368
+    Click
+    Sleep, 200
+    MouseMove,774,	424
+    Click
+    Sleep, 200
+    MouseMove,798,	437
+    Click
+    Sleep, 200
+    MouseMove,831,	427
+    Click
+    Sleep, 200
+    MouseMove,892,	387
+    Click
+    Sleep, 200
+    MouseMove,918,	374
+    Click
+    Sleep, 200
+    MouseMove,941,	372
+    Click
+    Sleep, 200
+    MouseMove,983,	395
+    Click
+    Sleep, 200
+    MouseMove,983,	492
+    Click
+    Sleep, 200
+    MouseMove,970,	517
+    Click
+    Sleep, 200
+    MouseMove,943,	531
+    Click
+    Sleep, 200
+    MouseMove,830,	554
+    Click
+    Sleep, 200
+    MouseMove,780,	576
+    Click
+    Sleep, 200
+    MouseMove,760,	539
+    Click
+    Sleep, 200
+    MouseMove,779,	510
+    Click
+    Sleep, 200
+    MouseMove,915,	400
+    Click
+    Sleep, 200
+    MouseMove,910,	373
+    Click
+    Sleep, 200
+    
+}
+
+CreateBox("FF0000")
+Box(362, 327, 940, 570, 2, "in")
+
 MsgBox Press "=" when you are ready.
 
 KeyWait, = , D
-
-Sleep, 500
-MouseMove, 424,704
-Click
-Sleep, 500
-MouseMove, 424,682
-Click
-Sleep, 500
-MouseMove, 437,659
-Click
-Sleep, 500
-MouseMove, 572,543
-Click
-Sleep, 500
-MouseMove, 575,516
-Click
-Sleep, 500
-MouseMove, 562,498
-Click
-Sleep, 500
-MouseMove, 433,500
-Click
-Sleep, 500
-MouseMove, 406,526
-Click
-Sleep, 500
-MouseMove, 425,575
-Click
-Sleep, 500
-MouseMove, 463,587
-Click
-Sleep, 500
-MouseMove,  568, 514
-Click
-Sleep, 500
-MouseMove, 607,509
-Click
-Sleep, 500
-MouseMove, 642,540
-Click
-Sleep, 500
-MouseMove, 647,590
-Click
-Sleep, 500
-MouseMove, 639,638
-Click
-Sleep, 500
-MouseMove, 596,676
-Click
-Sleep, 500
-MouseMove, 466,710
-Click
-Sleep, 500
-MouseMove, 436,726
-Click
-Sleep, 500
-MouseMove, 421,700
-Click
-Sleep, 500
-MouseMove, 424,704
-Click
+RemoveBox()
+DrawMap()
+    
+ExitApp 
